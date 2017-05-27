@@ -1,4 +1,26 @@
 {% extends 'qa/base.html' %}
-D
-{% block A %}{{ block.super }}E{% endblock %}
-F
+
+{% block content %}
+    <p><a href="/ask/" id="ask">
+                ЗАДАТЬ ВОПРОС</a></p>
+    {% for question in questions %}
+        <p><a href="/question/{{ question.id }}">
+                {{ question }}</a></p>
+    {% endfor %}
+
+    <ul class="pagination">
+        {% for p in paginator.page_range %}
+            {% if p.number == page.number %}
+            <li class="active">
+                {% else %}
+            <li>
+            {% endif %}
+
+            <a href="{{ paginator.base_url }} {{ p }}">
+                {{ p }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}
+
+

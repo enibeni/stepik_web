@@ -1,0 +1,16 @@
+h1 a {
+        color: #FCA205;
+    }
+
+body {
+        padding-left: 15px;
+    }
+
+#ask {
+        color: #FCA205;
+        float: right;
+}
+
+.answers {
+        background-color: #F8EC4F;
+}
