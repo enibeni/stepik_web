@@ -1,24 +1,24 @@
 # -- coding: utf-8 --
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+
 
 from .models import QuestionManager
 from .models import Question
 from .models import Answer
-from .forms import QuestionForm
+from .forms import QuestionForm, SignUpForm
 from .forms import AnswerForm
 
 
 def test(request, *args, **kwargs):
     return HttpResponse('OK!!!1')
-
-
-def login(request):
-    return render(request, 'qa/login.html', {})
 
 
 def index(request):
@@ -31,6 +31,21 @@ def index(request):
     page = paginator.page(page)
     return render(request, 'qa/index.html', {'questions': page.object_list,
                                              'paginator': paginator, 'page': page})
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 def question(request, pk):
@@ -63,6 +78,7 @@ def popular(request):
                                                'paginator': paginator, 'page': page})
 
 
+@login_required
 def ask(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)

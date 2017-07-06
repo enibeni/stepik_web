@@ -1,16 +1,20 @@
+.site-header-actions{
+
+}
+
 h1 a {
-        color: #FCA205;
-    }
+    color: #FCA205;
+}
 
 body {
-        padding-left: 15px;
-    }
+    padding-left: 15px;
+}
 
 #ask {
-        color: #FCA205;
-        float: right;
+     color: #FCA205;
+     float: right;
 }
 
 .answers {
-        background-color: #F8EC4F;
+     background-color: #F8EC4F;
 }

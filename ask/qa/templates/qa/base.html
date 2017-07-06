@@ -9,16 +9,24 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
       <body>
-    <div class="page-header">
-        <h1><a href="/">Q&A site</a></h1>
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+        <div class="site-header-actions">
+            {% if user.is_authenticated %}
+                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span> Sign in</a> or
+                <a href="{% url 'signup' %}" class="top-menu">   Sign up</a>
+            {% endif %}
+        </div>
+        <div class="page-header">
+              <h1><a href="/">Q&A site</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
             </div>
         </div>
-    </div>
-</body>
+      </body>
 </html>

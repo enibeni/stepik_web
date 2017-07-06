@@ -1,0 +1,20 @@
+[06/Jul/2017 21:40:49] "GET / HTTP/1.1" 200 3647
+[06/Jul/2017 21:41:21] "GET /login/ HTTP/1.1" 200 1531
+[06/Jul/2017 21:41:26] "GET / HTTP/1.1" 200 3647
+[06/Jul/2017 21:41:29] "GET /ask/ HTTP/1.1" 302 0
+Not Found: /accounts/login/
+[06/Jul/2017 21:41:29] "GET /accounts/login/?next=/ask/ HTTP/1.1" 404 3379
+[06/Jul/2017 21:41:44] "GET / HTTP/1.1" 200 3647
+[06/Jul/2017 21:41:46] "GET /ask/ HTTP/1.1" 302 0
+Not Found: /accounts/login/
+[06/Jul/2017 21:41:46] "GET /accounts/login/?next=/ask/ HTTP/1.1" 404 3379
+[06/Jul/2017 21:41:49] "GET / HTTP/1.1" 200 3647
+[06/Jul/2017 21:41:52] "GET /question/1 HTTP/1.1" 301 0
+[06/Jul/2017 21:41:52] "GET /question/1/ HTTP/1.1" 200 1765
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 06, 2017 - 21:40:45
+Django version 1.11, using settings 'ask.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
